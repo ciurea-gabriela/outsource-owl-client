@@ -7,16 +7,16 @@ import {Observable} from 'rxjs';
     providedIn: 'root'
 })
 export class UserAccountService {
-    private readonly LOCAL_HOST_REGISTER_USER: string = 'http://localhost:8080/users';
+    private readonly API_URI_REGISTER_USER: string = 'https://outsource-owl-api.herokuapp.com/users';
 
     constructor(private http: HttpClient) {
     }
 
     public registerUser(signUp: SignUp): Observable<void> {
-        return this.http.post<void>(this.LOCAL_HOST_REGISTER_USER, signUp);
+        return this.http.post<void>(this.API_URI_REGISTER_USER, signUp);
     }
 
     public addUserBalance(userId: number, amount: number): Observable<any> {
-        return this.http.post<any>(`http://localhost:8080/users/${userId}/balance`, {balance: amount});
+        return this.http.post<any>(`https://outsource-owl-api.herokuapp.com/${userId}/balance`, {balance: amount});
     }
 }

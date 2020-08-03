@@ -10,7 +10,7 @@ import {LoginDialogComponent} from './components/login-dialog/login-dialog.compo
 import {RegisterUserDialogComponent} from './components/register-user-dialog/register-user-dialog.component';
 import {LoginNavbarComponent} from './components/login-navbar/login-navbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfirmationDialog} from "./components/confirmation-dialog/confirmation-dialog.component";
+import {ConfirmationDialogComponent} from './components/confirmation-dialog/confirmation-dialog.component';
 import { PurchaseDialogComponent } from './components/purchase-dialog/purchase-dialog.component';
 import { AddBalanceDialogComponent } from './components/add-balance-dialog/add-balance-dialog.component';
 
@@ -24,7 +24,7 @@ import { AddBalanceDialogComponent } from './components/add-balance-dialog/add-b
         LoginDialogComponent,
         RegisterUserDialogComponent,
         LoginNavbarComponent,
-        ConfirmationDialog,
+        ConfirmationDialogComponent,
         PurchaseDialogComponent,
         AddBalanceDialogComponent
     ],
@@ -43,12 +43,12 @@ import { AddBalanceDialogComponent } from './components/add-balance-dialog/add-b
         LoginNavbarComponent,
         RegisterUserDialogComponent,
         LoginDialogComponent,
-        ConfirmationDialog
+        ConfirmationDialogComponent
     ],
     entryComponents: [
         LoginDialogComponent,
         RegisterUserDialogComponent,
-        ConfirmationDialog
+        ConfirmationDialogComponent
     ]
 })
 export class SharedModule {

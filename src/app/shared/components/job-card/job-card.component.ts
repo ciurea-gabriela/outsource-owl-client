@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Job} from '../../../model/job.interface';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-job-card',

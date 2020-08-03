@@ -1,19 +1,20 @@
+/* tslint:disable:triple-equals */
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Purchase} from "../model/purchase.interface";
-import {PurchaseService} from "../core/services/purchase.service";
-import {AuthService} from "../core/services/auth.service";
-import {UserAccount} from "../model/user-account.interface";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {FormControl, Validators} from "@angular/forms";
-import {PurchaseStatus} from "../model/enums/purchase-status.enum";
-import {MatDialog} from "@angular/material/dialog";
-import {ConfirmationDialog} from "../shared/components/confirmation-dialog/confirmation-dialog.component";
-import {ConfirmationStatus} from "../model/enums/confirmation-dialog-status.enum";
-import {Observable} from "rxjs";
-import {PurchaseStatusUpdate} from "../model/purchase-status-update.interface";
-import {HttpErrorResponse} from "@angular/common/http";
-import {RoleType} from "../model/enums/role-type.enum";
-import {RatePurchaseComponent} from "./components/rate-purchase/rate-purchase.component";
+import {Purchase} from '../model/purchase.interface';
+import {PurchaseService} from '../core/services/purchase.service';
+import {AuthService} from '../core/services/auth.service';
+import {UserAccount} from '../model/user-account.interface';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
+import {PurchaseStatus} from '../model/enums/purchase-status.enum';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmationDialogComponent} from '../shared/components/confirmation-dialog/confirmation-dialog.component';
+import {ConfirmationStatus} from '../model/enums/confirmation-dialog-status.enum';
+import {Observable} from 'rxjs';
+import {PurchaseStatusUpdate} from '../model/purchase-status-update.interface';
+import {HttpErrorResponse} from '@angular/common/http';
+import {RoleType} from '../model/enums/role-type.enum';
+import {RatePurchaseComponent} from './components/rate-purchase/rate-purchase.component';
 
 @Component({
     selector: 'app-purchase',
@@ -91,7 +92,7 @@ export class PurchaseComponent implements OnInit {
                 status: PurchaseStatus.DELIVERED
             };
             this.purchaseService.updatePurchaseStatus(this.currentUser.id, this.purchase.id, delivery).subscribe(
-                next => {
+                () => {
                     this.refreshPurchaseData();
                 },
                 (err: HttpErrorResponse) => {
@@ -105,18 +106,18 @@ export class PurchaseComponent implements OnInit {
     public acceptPurchase(): void {
         this.purchaseService.updatePurchaseStatus(this.currentUser.id, this.purchase.id, {
             status: PurchaseStatus.FINISHED
-        }).subscribe(next => this.refreshPurchaseData());
+        }).subscribe(() => this.refreshPurchaseData());
     }
 
     public openCancelPurchaseDialog(): void {
         if (this.purchase.status == PurchaseStatus.IN_PROGRESS) {
-            const dialogRef = this.dialog.open(ConfirmationDialog, {
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
                 data: 'Are you sure you want to cancel the purchase?'
             });
 
             dialogRef.afterClosed().subscribe(result => {
                 if (result == ConfirmationStatus.YES) {
-                    this.cancelPurchase().subscribe(result => {
+                    this.cancelPurchase().subscribe(() => {
                         this.authService.refreshCurrentUser().then(() => this.refreshPurchaseData());
                     });
                 }
@@ -128,7 +129,7 @@ export class PurchaseComponent implements OnInit {
         this.purchaseService.updatePurchaseStatus(this.currentUser.id, this.purchase.id, {
             status: PurchaseStatus.RATED,
             rating: $rating
-        }).subscribe(next => this.refreshPurchaseData());
+        }).subscribe(() => this.refreshPurchaseData());
     }
 
     public getRatingOrDefault(): number {

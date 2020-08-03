@@ -8,7 +8,7 @@ import {JobReq} from '../../model/job-req.interface';
     providedIn: 'root'
 })
 export class JobService {
-    private readonly LOCAL_HOST: string = 'http://localhost:8080';
+    private readonly API_URI: string = 'https://outsource-owl-api.herokuapp.com';
 
     constructor(private http: HttpClient) {
     }
@@ -22,11 +22,11 @@ export class JobService {
         formData.append('job', blobOverrides, 'job');
         console.log(formData);
 
-        return this.http.post<any>(this.LOCAL_HOST + `/users/${userId}/jobs`, formData);
+        return this.http.post<any>(this.API_URI + `/users/${userId}/jobs`, formData);
     }
 
     public getAllJobsWithPagination(jobReq: JobReq): Observable<Job[]> {
-        return this.http.get<Job[]>(this.LOCAL_HOST + '/jobs', {
+        return this.http.get<Job[]>(this.API_URI + '/jobs', {
             params: {
                 distinct: jobReq.distinct,
                 page: jobReq.page,
@@ -38,10 +38,10 @@ export class JobService {
     }
 
     public getAllJobsBySellerId(id: number): Observable<Job[]> {
-        return this.http.get<Job[]>(this.LOCAL_HOST + `/users/${id}/jobs`);
+        return this.http.get<Job[]>(this.API_URI + `/users/${id}/jobs`);
     }
 
     public getJobById(id: number): Observable<Job> {
-        return this.http.get<Job>(this.LOCAL_HOST + `/jobs/${id}`);
+        return this.http.get<Job>(this.API_URI + `/jobs/${id}`);
     }
 }

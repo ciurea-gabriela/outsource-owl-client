@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {UserAccountService} from "../../../core/services/user-account.service";
-import {AuthService} from "../../../core/services/auth.service";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {MatDialogRef} from "@angular/material/dialog";
-import {ConfirmationStatus} from "../../../model/enums/confirmation-dialog-status.enum";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {UserAccountService} from '../../../core/services/user-account.service';
+import {AuthService} from '../../../core/services/auth.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {MatDialogRef} from '@angular/material/dialog';
+import {ConfirmationStatus} from '../../../model/enums/confirmation-dialog-status.enum';
 
 @Component({
     selector: 'app-add-balance-dialog',
@@ -32,7 +32,7 @@ export class AddBalanceDialogComponent implements OnInit {
         if (this.balanceForm.valid) {
             const currentUserId = JSON.parse(this.authService.getCurrentUser()).id;
             this.userAccountService.addUserBalance(currentUserId, this.balanceForm.get('balance').value)
-                .subscribe((response: HttpResponse<any>) => {
+                .subscribe(() => {
                         this.dialogRef.close(ConfirmationStatus.YES);
                     },
                     (err: HttpErrorResponse) => {

@@ -4,7 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {CategoryComponent} from './category/category.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {JobComponent} from './job/job.component';
-import {PurchaseComponent} from "./purchase/purchase.component";
+import {PurchaseComponent} from './purchase/purchase.component';
 
 
 const routes: Routes = [

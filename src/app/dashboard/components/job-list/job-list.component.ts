@@ -22,7 +22,7 @@ export class JobListComponent implements OnInit {
     public currentUser: CurrentUserInfo;
     public displayedColumns: string[] = ['previewImage', 'name', 'price', 'daysUntilDelivery'];
     public dataSource: MatTableDataSource<Job>;
-    public readonly LOCAL_HOST: string = 'http://localhost:8080/images/';
+    public readonly LOCAL_HOST: string = 'https://outsource-owl-api.herokuapp.com/images/';
     public isEmpty: boolean;
 
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

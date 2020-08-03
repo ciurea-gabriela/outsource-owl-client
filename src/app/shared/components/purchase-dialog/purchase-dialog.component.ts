@@ -1,12 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {PurchaseDialogData} from "../../../model/purchase-dialog.data";
-import {ConfirmationStatus} from "../../../model/enums/confirmation-dialog-status.enum";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PurchaseService} from "../../../core/services/purchase.service";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {AuthService} from "../../../core/services/auth.service";
-import {CurrentUserInfo} from "../../../model/current-user-info.interface";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {PurchaseDialogData} from '../../../model/purchase-dialog.data';
+import {ConfirmationStatus} from '../../../model/enums/confirmation-dialog-status.enum';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {PurchaseService} from '../../../core/services/purchase.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {AuthService} from '../../../core/services/auth.service';
+import {CurrentUserInfo} from '../../../model/current-user-info.interface';
 
 @Component({
     selector: 'app-purchase-dialog',
@@ -59,7 +59,7 @@ export class PurchaseDialogComponent implements OnInit {
                 jobId: this.data.jobId,
                 customerId: this.currentUser.id
             };
-            this.purchaseService.createPurchase(requestData).subscribe((response: HttpResponse<any>) => {
+            this.purchaseService.createPurchase(requestData).subscribe(() => {
                     this.dialogRef.close(ConfirmationStatus.YES);
                 },
                 (err: HttpErrorResponse) => {

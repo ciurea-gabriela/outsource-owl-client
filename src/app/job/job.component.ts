@@ -1,9 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Job} from "../model/job.interface";
-import {RoleType} from "../model/enums/role-type.enum";
-import {UserAccount} from "../model/user-account.interface";
-import {AuthService} from "../core/services/auth.service";
-import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-job',

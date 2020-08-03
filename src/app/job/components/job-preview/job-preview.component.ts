@@ -1,16 +1,17 @@
+/* tslint:disable:triple-equals */
 import {Component, OnInit} from '@angular/core';
-import {RoleType} from "../../../model/enums/role-type.enum";
-import {Job} from "../../../model/job.interface";
-import {UserAccount} from "../../../model/user-account.interface";
-import {AuthService} from "../../../core/services/auth.service";
-import {MatDialog} from "@angular/material/dialog";
-import {JobService} from "../../../core/services/job.service";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {ConfirmationStatus} from "../../../model/enums/confirmation-dialog-status.enum";
-import {PurchaseDialogComponent} from "../../../shared/components/purchase-dialog/purchase-dialog.component";
-import {LoginDialogComponent} from "../../../shared/components/login-dialog/login-dialog.component";
-import {DialogEvent} from "../../../model/enums/dialog-event.enum";
-import {AddBalanceDialogComponent} from "../../../shared/components/add-balance-dialog/add-balance-dialog.component";
+import {RoleType} from '../../../model/enums/role-type.enum';
+import {Job} from '../../../model/job.interface';
+import {UserAccount} from '../../../model/user-account.interface';
+import {AuthService} from '../../../core/services/auth.service';
+import {MatDialog} from '@angular/material/dialog';
+import {JobService} from '../../../core/services/job.service';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ConfirmationStatus} from '../../../model/enums/confirmation-dialog-status.enum';
+import {PurchaseDialogComponent} from '../../../shared/components/purchase-dialog/purchase-dialog.component';
+import {LoginDialogComponent} from '../../../shared/components/login-dialog/login-dialog.component';
+import {DialogEvent} from '../../../model/enums/dialog-event.enum';
+import {AddBalanceDialogComponent} from '../../../shared/components/add-balance-dialog/add-balance-dialog.component';
 
 @Component({
     selector: 'app-job-preview',
@@ -19,7 +20,7 @@ import {AddBalanceDialogComponent} from "../../../shared/components/add-balance-
 })
 export class JobPreviewComponent implements OnInit {
 
-    public readonly LOCAL_HOST: string = 'http://localhost:8080/images/';
+    public readonly LOCAL_HOST: string = 'https://outsource-owl-api.herokuapp.com/images/';
     public job: Job;
     public currentUser: UserAccount;
     private wasUserNotLogged = false;
@@ -49,7 +50,7 @@ export class JobPreviewComponent implements OnInit {
 
     public purchase(): void {
         if (this.isUserBuyer() && this.currentUser.balance >= this.job?.price) {
-            this.openPurchaseDialog()
+            this.openPurchaseDialog();
             return;
         }
 

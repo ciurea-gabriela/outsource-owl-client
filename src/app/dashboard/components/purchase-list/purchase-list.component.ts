@@ -6,7 +6,7 @@ import {MatSort} from '@angular/material/sort';
 import {AuthService} from '../../../core/services/auth.service';
 import {Purchase} from '../../../model/purchase.interface';
 import {PurchaseService} from '../../../core/services/purchase.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-purchase-list',
@@ -21,7 +21,7 @@ export class PurchaseListComponent implements OnInit {
     public dataSource: MatTableDataSource<Purchase>;
     public selectedPurchaseId: number;
     public isEmpty: boolean;
-    public readonly LOCAL_HOST: string = 'http://localhost:8080/images/';
+    public readonly LOCAL_HOST: string = 'https://outsource-owl-api.herokuapp.com/images/';
 
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     @ViewChild(MatSort, {static: true}) sort: MatSort;

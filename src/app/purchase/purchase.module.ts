@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PurchaseComponent } from './purchase.component';
-import {CoreModule} from "../core/core.module";
+import {CoreModule} from '../core/core.module';
 import { RatePurchaseComponent } from './components/rate-purchase/rate-purchase.component';
 import { StarComponent } from './components/star/star.component';
 

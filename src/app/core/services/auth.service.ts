@@ -19,7 +19,7 @@ export class AuthService {
         };
 
         return new Promise((resolve, reject) => {
-            this.http.post('http://localhost:8080/signin', login, httpOptions).subscribe(
+            this.http.post('https://outsource-owl-api.herokuapp.com/signin', login, httpOptions).subscribe(
                 (response: HttpResponse<any>) => {
                     const jwt = response.headers.get('Authorization');
                     this.setSession(jwt, response.body);
@@ -60,7 +60,7 @@ export class AuthService {
     }
 
     public async refreshCurrentUser() {
-        const response = await this.http.get('http://localhost:8080/users/current-info').toPromise();
+        const response = await this.http.get('https://outsource-owl-api.herokuapp.com/users/current-info').toPromise();
         localStorage.setItem('currentUser', JSON.stringify(response));
     }
 }
