@@ -1,6 +1,6 @@
 <div class="card-list">
     <div class="card" *ngFor="let job of jobs" (click)="goToJob(job?.id)">
-        <img class="card-image" src="{{LOCAL_HOST + job.previewImage}}" alt="suggestive image for the job"/>
+        <img class="card-image" src="{{IMAGES_API_URL + job.previewImage}}" alt="suggestive image for the job"/>
         <div class="card-shadow">
             <div>
                 <p class="title" *ngIf="home">{{job.category.name}}</p>

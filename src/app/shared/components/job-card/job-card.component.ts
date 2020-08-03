@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class JobCardComponent implements OnInit {
     @Input() jobs: Array<Job>;
     @Input() home = false;
-    public readonly LOCAL_HOST: string = 'http://localhost:8080/images/';
+    public readonly IMAGES_API_URL: string = 'https://outsource-owl.herokuapp.com/images/';
 
     constructor(private router: Router) {
     }
