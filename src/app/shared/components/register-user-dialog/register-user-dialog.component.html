@@ -1,0 +1,70 @@
+<div class="group">
+    <img src="assets/icons/owl_logo.svg" alt="outsource owl"/>
+    <p class="text">Sign up</p>
+</div>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="mat-typography">
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username" maxlength="100">
+            <mat-error *ngIf="this.registerForm.get('username').hasError('minlength') &&
+                              !this.registerForm.get('username').hasError('maxlength') &&
+                              !this.registerForm.get('username').hasError('required')">
+                Username should contain between 5 and 100 characters.
+            </mat-error>
+            <mat-error *ngIf="this.registerForm.get('username').hasError('required')">
+                Username is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email" maxlength="150">
+            <mat-error *ngIf="(this.registerForm.get('email').hasError('minlength') ||
+                              this.registerForm.get('email').hasError('maxlength')) &&
+                              (!this.registerForm.get('email').hasError('email') &&
+                              !this.registerForm.get('email').hasError('required'))">
+                Email should contain between 5 and 150 characters.
+            </mat-error>
+            <mat-error *ngIf="this.registerForm.get('email').hasError('email') &&
+                              !this.registerForm.get('email').hasError('required')">
+                Please enter a valid email. For ex: email@...
+            </mat-error>
+            <mat-error *ngIf="this.registerForm.get('email').hasError('required')">
+                Email is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput
+                   [type]="hide ? 'password' : 'text'" maxlength="35">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="(this.registerForm.get('password').hasError('minlength') ||
+                              this.registerForm.get('password').hasError('maxlength')) &&
+                              !this.registerForm.get('password').hasError('required')">
+                Password should contain between 5 and 35 characters.
+            </mat-error>
+            <mat-error *ngIf="this.registerForm.get('password').hasError('required')">
+                Password is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Role Type</mat-label>
+            <mat-select formControlName="roleType" placeholder="Select your main interest">
+                <mat-option value='ROLE_SELLER'>Seller</mat-option>
+                <mat-option value='ROLE_BUYER'>Customer</mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.registerForm.get('roleType').hasError('required')">
+                Role Type is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="errMessage !== null">{{errMessage | titlecase}}</mat-error>
+    </div>
+    <mat-dialog-actions align="center">
+        <button type="submit" mat-raised-button class="register">SIGN UP</button>
+        <button mat-button mat-dialog-close (click)="closeDialog()">Cancel</button>
+    </mat-dialog-actions>
+</form>

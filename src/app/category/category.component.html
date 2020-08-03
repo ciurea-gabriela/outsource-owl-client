@@ -1,0 +1,22 @@
+<app-login-navbar></app-login-navbar>
+<app-menu [selectedCategoryId]="categoryId"></app-menu>
+<div>
+    <p class="title">{{category?.name}}</p>
+    <p class="title" *ngIf="categoryId === ''">{{category?.name}}Jobs from all categories</p>
+    <p class="subtitle">Do more with less! Check out these {{category?.name}} jobs and make your project come to
+        life.</p>
+    <p class="title" *ngIf="this.jobs?.length === 0">No more Jobs to show! Return to previous pages</p>
+</div>
+<app-job-card [jobs]="jobs"></app-job-card>
+<div class="paginator">
+    <button class="paginator-button material-icons" (click)="changePageNumbers('previous')"
+            *ngIf="showPreviousButton()">
+        keyboard_arrow_left
+    </button>
+    <div *ngFor="let pageNumber of pages">
+        <button class="paginator-button" [ngClass]="{'selected-button': pageNumber === this.selectedPage}"
+                (click)="onPageClick(pageNumber)">{{pageNumber + 1}}</button>
+    </div>
+    <button class="paginator-button material-icons" (click)="changePageNumbers('next')">keyboard_arrow_right</button>
+</div>
+<app-footer></app-footer>

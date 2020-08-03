@@ -1,0 +1,113 @@
+.title {
+    text-align: center;
+    font-weight: 300;
+    color: #484848;
+    font-size: 32px;
+    letter-spacing: 0.02em;
+}
+
+.title-status {
+    text-decoration: underline;
+    color: #28F09E;
+}
+
+.box {
+    margin: 40px auto 0 auto;
+    width: 80%;
+    border: 0.3px solid #cecece;
+    padding: 20px 35px 20px 35px;
+}
+
+.box-title {
+    color: #484848;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.box-details {
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: #686868;
+    font-weight: 300;
+}
+
+.purchase-details-view-job {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: #969696;
+}
+
+.purchase-details-view-job:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.purchase-details-info {
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: #484848;
+    display: flex;
+    justify-content: space-between;
+}
+
+.purchase-details-info p {
+    margin: 0;
+}
+
+.cancel-purchase {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: #969696;
+}
+
+.total-price {
+    align-self: flex-end;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: #5E5E5E;
+}
+
+.under-line {
+    text-decoration: underline;
+}
+
+.deliver-box {
+    width: 100%;
+}
+
+.deliver-title {
+    margin-bottom: 0;
+}
+
+.right-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.green-button {
+    margin: 3px;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    background: #35E39E;
+    color: white;
+    border-radius: 4px;
+}
+
+.pointer-cursor {
+    cursor: pointer;
+}
+
+.rate-purchase-title {
+    text-align: center;
+    margin: 15px 0 0 0;
+}
+
+.hidden {
+    display: none;
+}

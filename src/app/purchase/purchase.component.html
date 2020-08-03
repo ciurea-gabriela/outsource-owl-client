@@ -1,0 +1,58 @@
+<app-login-navbar></app-login-navbar>
+<app-menu></app-menu>
+
+<h1 class="title">Purchase <span
+    class="title-status">{{purchase?.status?.toString() | removeUnderscore | titlecase}}</span></h1>
+
+<div class="box">
+    <p class="box-title">{{purchase?.job.name}}
+        <span (click)="goToJobPage(purchase?.job.id)" class="purchase-details-view-job">(view job)</span>
+    </p>
+    <p class="box-details">{{purchase?.description}}</p>
+    <div class="purchase-details-info">
+        <div class="purchase-details-info-list">
+            <p>Quantity: {{purchase?.quantity}}</p>
+            <p>Duration: {{purchase?.job.daysUntilDelivery}} days</p>
+            <p>Delivery Deadline: {{purchase?.deliveryDate | date:'medium'}}</p>
+            <p *ngIf="isPurchaseInProgressOrLate()" class="cancel-purchase">Not satisfied with this purchase? You can
+                <span class="under-line pointer-cursor" (click)="openCancelPurchaseDialog()">cancel</span>
+                anytime.</p>
+        </div>
+        <p class="total-price">Total Price: {{purchase?.price | currency:'EUR':"symbol"}}</p>
+    </div>
+</div>
+
+<div class="box" *ngIf="isPurchaseInProgressOrLate() && isUserSeller()">
+    <p class="box-title deliver-title">Deliver</p>
+    <form>
+        <mat-form-field class="deliver-box">
+            <textarea matInput rows="1" matInput [formControl]="deliverFormControl" placeholder="Here's your delivery.."
+                      maxlength="255"></textarea>
+        </mat-form-field>
+    </form>
+    <mat-error *ngIf="deliveryErrorMessage">
+        {{deliveryErrorMessage}}
+    </mat-error>
+    <div class="right-button">
+        <button (click)="submitDelivery()" mat-flat-button class="green-button">Deliver Purchase</button>
+    </div>
+</div>
+
+<div class="box" *ngIf="isPurchaseDelivered()">
+    <p class="box-title">Delivery</p>
+    <p class="box-details">
+        {{purchase?.delivery}}
+    </p>
+    <div class="right-button">
+        <button *ngIf="isUserBuyer()" (click)="acceptPurchase()" mat-flat-button class="green-button">Accept Purchase
+        </button>
+    </div>
+</div>
+
+<div [class.hidden]="!isPurchaseFinished() || (isUserSeller() && purchase?.rating == null)">
+    <p class="title rate-purchase-title">{{ratingSectionTitle}}</p>
+    <app-rate-purchase (ratingEvent)="receiveRating($event)"
+                       [isSelectable]="isRatingSelectable"></app-rate-purchase>
+</div>
+
+<app-footer></app-footer>

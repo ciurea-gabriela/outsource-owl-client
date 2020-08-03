@@ -1,0 +1,30 @@
+<div class="group">
+    <div>
+        <p class="title">Categories</p>
+        <div class="item subgroup" *ngFor="let category of categories">
+            <a (click)="goToCategories(category.id)">{{category.name}}</a>
+        </div>
+    </div>
+
+    <div>
+        <p class="title">About</p>
+        <div class="item subgroup">
+            <a>Careers</a>
+            <a>News</a>
+            <a>Partnerships</a>
+            <a>Terms of Service</a>
+            <a>Privacy Policy</a>
+        </div>
+    </div>
+
+    <div>
+        <p class="title">Support</p>
+        <div class="item subgroup">
+            <a>Help & Support</a>
+            <a>Safety</a>
+            <a>Selling on Outsource Owl</a>
+            <a>Buying on Outsource Owl</a>
+        </div>
+    </div>
+</div>
+<app-logo [isLogoFooter]=true></app-logo>

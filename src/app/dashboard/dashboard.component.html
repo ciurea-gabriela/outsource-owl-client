@@ -1,0 +1,14 @@
+<app-login-navbar></app-login-navbar>
+<app-menu></app-menu>
+<div>
+    <p class="title">Dashboard</p>
+    <p class="subtitle">Current Balance:
+        <span class="green-currency">{{currentUser?.balance | currency:'EUR':'symbol':'1.2-2'}}</span>
+    </p>
+</div>
+<app-job-list *ngIf="!isBuyer"></app-job-list>
+<div *ngIf="isBuyer" class="add-balance-group">
+    <button mat-flat-button class="add-balance-button" (click)="openAddBalanceDialog()">Add Balance</button>
+</div>
+<app-purchase-list></app-purchase-list>
+<app-footer></app-footer>

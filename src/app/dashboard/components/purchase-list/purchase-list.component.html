@@ -1,0 +1,43 @@
+<div class="purchase-subtitle-group">
+    <p class="title">Purchases</p>
+</div>
+<p *ngIf="isEmpty" class="empty-list">There are no purchases yet.</p>
+<div *ngIf="!isEmpty" class="mat-elevation-z0">
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="previewImage">
+            <th mat-header-cell *matHeaderCellDef>Preview Image</th>
+            <td mat-cell *matCellDef="let purchase">
+                <img class="image" src="{{LOCAL_HOST + purchase.job.previewImage}}"
+                     alt="suggestive image for the purchase"/>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+            <td mat-cell *matCellDef="let purchase"> {{purchase.job.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="creationDate">
+            <th mat-header-cell *matHeaderCellDef>Start Date</th>
+            <td mat-cell *matCellDef="let purchase"> {{purchase.creationDate | date: 'mediumDate'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+            <td mat-cell *matCellDef="let purchase"> {{purchase.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let purchase"> {{purchase.status | removeUnderscore | titlecase}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row class="row" *matRowDef="let purchase; columns: displayedColumns;"
+            (click)="goToPurchase(purchase.id)"></tr>
+
+    </table>
+
+    <mat-paginator class="paginator" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+</div>

@@ -1,0 +1,79 @@
+.box {
+    margin: 40px auto 0 auto;
+    width: 80%;
+    border: 0.3px solid #cecece;
+    padding: 20px 35px 20px 35px;
+}
+.box-title {
+    color: #484848;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.rating {
+    display: flex;
+    align-items: flex-end;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: #484848;
+}
+
+.rating-info {
+    display: block;
+}
+
+.rating span {
+    color: gold;
+}
+
+.star {
+    color: gold;
+    font-size: 15px;
+    padding-bottom: 1px;
+}
+
+.job-preview-image {
+    max-height: 550px;
+    width: 100%;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+.box-details {
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: #686868;
+    font-weight: 300;
+}
+
+.purchase-details-info {
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: #484848;
+    display: flex;
+    justify-content: space-between;
+}
+
+.purchase-details-info p {
+    margin: 0;
+}
+
+.right-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.green-button {
+    margin: 3px;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    background: #35E39E;
+    color: white;
+    border-radius: 4px;
+}

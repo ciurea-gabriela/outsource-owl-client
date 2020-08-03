@@ -1,0 +1,20 @@
+<div class="card-list">
+    <div class="card" *ngFor="let job of jobs" (click)="goToJob(job?.id)">
+        <img class="card-image" src="{{LOCAL_HOST + job.previewImage}}" alt="suggestive image for the job"/>
+        <div class="card-shadow">
+            <div>
+                <p class="title" *ngIf="home">{{job.category.name}}</p>
+                <p class="text">By {{job.seller.username}}</p>
+                <p class="title" *ngIf="!home">{{job.name}}</p>
+            </div>
+            <div class="card-last-line">
+                <div class="rating" *ngIf="!home">
+                    <i class="material-icons star">star_rate</i>
+                    <p class="text rating" >{{job.rating}}</p>
+                </div>
+
+                <p class="text currency">{{job.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+            </div>
+        </div>
+    </div>
+</div>

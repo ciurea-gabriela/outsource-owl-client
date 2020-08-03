@@ -1,0 +1,30 @@
+<div class="group">
+    <img src="assets/icons/owl_logo.svg" alt="outsource owl"/>
+    <p class="title">Order Now</p>
+</div>
+
+<form [formGroup]="orderForm">
+    <mat-form-field class="field">
+        <textarea matInput rows="3" matInput formControlName="requirements" placeholder="Requirements.."
+                  maxlength="255"></textarea>
+
+        <mat-error *ngIf="(orderForm.get('requirements').hasError('required'))">
+            Requirements are mandatory
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+        <input type="number" class="form-control" matInput formControlName="quantity" name="requirements"
+               placeholder="Pick Quantity ({{quantity}})" value="{{quantity}}"
+               (change)="updateFinalPrice($event)" min="1" max="10">
+    </mat-form-field>
+
+    <p>Total Price: {{totalPrice | currency: 'EUR':'symbol'}}</p>
+
+    <p class="error" *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+
+    <mat-dialog-actions align="center">
+        <button class="button" mat-raised-button (click)="order()">Order</button>
+        <button mat-button mat-dialog-close (click)="cancel()">Cancel</button>
+    </mat-dialog-actions>
+</form>

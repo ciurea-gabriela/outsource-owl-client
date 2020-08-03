@@ -1,0 +1,45 @@
+.title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: #6C6C6C;
+    margin: 5px;
+}
+
+.item {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.075em;
+    color: #737373;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.group {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.subgroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.rights {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.075em;
+    color: rgba(163, 161, 161, 0.62);
+}
+
+.logo-footer {
+    display: flex;
+    justify-content: flex-end;
+}

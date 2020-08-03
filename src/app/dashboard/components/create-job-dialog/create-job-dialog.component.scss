@@ -1,0 +1,46 @@
+mat-form-field {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5px;
+}
+
+.create-job-button {
+    background: #35E39E;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    color: white;
+}
+
+.group {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    color: #424242;
+    text-align: left;
+    margin: 10px 0 10px 0;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.upload-icon {
+    padding-right: 10px;
+}

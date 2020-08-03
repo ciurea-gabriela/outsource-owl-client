@@ -1,0 +1,73 @@
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.card {
+    margin: 6px 10px 6px 10px;
+    width: 280px;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card-shadow {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+    padding: 3px;
+    border-radius: 0 0 7px 7px;
+    height: 85px;
+    position: relative
+}
+
+.card-image {
+    width: 280px;
+    height: 310px;
+    object-fit: cover;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    color: #6C6C6C;
+    text-align: start;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 100;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #6C6C6C;
+    margin: 0;
+    text-align: start;
+}
+
+.rating {
+    display: flex;
+}
+
+.card-last-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+}
+
+.star {
+    color: gold;
+    font-size: 18px;
+}
+
+.currency {
+    padding-right: 5px;
+}

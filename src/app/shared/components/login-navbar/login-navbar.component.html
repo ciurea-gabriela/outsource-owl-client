@@ -1,0 +1,12 @@
+<div class="nav-bar">
+    <app-logo></app-logo>
+    <div>
+        <button *ngIf="isLoggedOut" mat-button class="transparent-button" (click)="openLoginDialog()">Sign in</button>
+        <button *ngIf="isLoggedOut" mat-flat-button class="join" (click)="openRegisterUserDialog()">Join</button>
+        <button *ngIf="!isLoggedOut" mat-flat-button class="username-with-icon" (click)="goToDashboard()">
+            {{currentUser.username}}
+            <span class="material-icons">account_circle</span>
+        </button>
+        <button *ngIf="!isLoggedOut" mat-button class="transparent-button" (click)="logOut()">Log out</button>
+    </div>
+</div>

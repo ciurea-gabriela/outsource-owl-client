@@ -1,0 +1,44 @@
+<div class="group">
+    <img src="assets/icons/owl_logo.svg" alt="outsource owl"/>
+    <p class="text">Sign in</p>
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="mat-typography">
+        <mat-form-field>
+            <mat-label>Username/Email</mat-label>
+            <input type="text" matInput formControlName="usernameOrEmail"
+                   placeholder="Please insert username/email" maxlength="150">
+            <mat-error *ngIf="(loginForm.get('usernameOrEmail').hasError('minlength') ||
+                              loginForm.get('usernameOrEmail').hasError('maxlength')) &&
+                              !loginForm.get('usernameOrEmail').hasError('required')">
+                Username/email should contains between 5 and 150 characters.
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('usernameOrEmail').hasError('required')">
+                Username/email is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input formControlName="password"
+                   placeholder="Please insert your password" matInput [type]="hide ? 'password' : 'text'"
+                   maxlength="35">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="(loginForm.get('password').hasError('minlength') ||
+                              loginForm.get('password').hasError('maxlength')) &&
+                              !loginForm.get('password').hasError('required')">
+                Password should contains between 5 and 150 characters.
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                Password is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="isBadCredentials">Username/email or password is invalid</mat-error>
+    </div>
+    <mat-dialog-actions align="center">
+        <button type="submit" mat-raised-button class="transparent-button">SIGN IN</button>
+        <button mat-button mat-dialog-close (click)="closeDialog()">Cancel</button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,33 @@
+.info-group {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 10px 0px 10px;
+}
+
+.title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    letter-spacing: 0.02em;
+    color: #424242;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: flex-start;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #424242;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #6C6C6C;
+}

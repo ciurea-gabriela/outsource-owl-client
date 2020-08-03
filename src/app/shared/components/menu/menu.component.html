@@ -1,0 +1,16 @@
+<div class="menu-items">
+    <div>
+        <a class="text" [class.underline]="selectedCategoryId === ''" (click)="goToAllCategories()">All Categories</a>
+    </div>
+    <div *ngFor="let category of getCategoriesSelection(0, 5)">
+        <a class="text" [class.underline]="selectedCategoryId === category.id.toString()"
+           (click)="goToCategories(category.id)">{{category.name}}</a>
+    </div>
+    <div class="dropdown">
+        <button class="drop-button">See More</button>
+        <div class="dropdown-content">
+            <a *ngFor="let category of getCategoriesSelection(5, categories?.length)"
+               (click)="goToCategories(category.id)">{{category.name}}</a>
+        </div>
+    </div>
+</div>

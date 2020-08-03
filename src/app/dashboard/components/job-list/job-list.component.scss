@@ -1,0 +1,108 @@
+.title {
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: #484848;
+    text-align: center;
+    font-size: 28px;
+    margin: 20px 0 0 0;
+}
+
+.empty-list {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: 0.02em;
+    color: #484848;
+    text-align: start;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.image {
+    width: 100px;
+    height: 80px;
+}
+
+table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.paginator {
+    width: 90%;
+    margin: 0 auto;
+}
+
+//align header with sort
+.mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+th.mat-header-cell {
+    font-size: 16px;
+    text-align: center !important;
+    color: #333333;
+    margin: 0 auto;
+}
+
+//cell
+td.mat-cell {
+    text-align: center !important;
+    color: #6C6C6C;
+    font-weight: normal;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.row:hover {
+    background-color: rgba(242, 237, 237, 0.52);;
+}
+
+.star {
+    padding-bottom: 2px;
+    color: gold;
+    font-size: 18px;
+}
+
+.rating {
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 100;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    color: #6C6C6C;
+    margin: 0;
+    text-align: center;
+}
+
+.job-subtitle-group {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.green-button {
+    margin: 3px;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    background: #35E39E;
+    color: white;
+    border-radius: 4px;
+}
+
+.align-button {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin: 0 auto;
+}

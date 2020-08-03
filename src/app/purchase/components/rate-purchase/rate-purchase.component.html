@@ -1,0 +1,5 @@
+<div class="stars">
+    <app-star *ngFor="let position of starsPositions" [starPosition]="position" [hoveredStar]="hoveredStar"
+              (mouseover)="updateHoveredStar(position)" (mouseout)="updateHoveredStar(0)"
+              (click)="emitRatingEvent(position)"></app-star>
+</div>

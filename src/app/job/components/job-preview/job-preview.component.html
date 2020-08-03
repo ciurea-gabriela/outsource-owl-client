@@ -1,0 +1,26 @@
+<div class="box">
+    <p class="box-title">{{job?.name}} (Starting at {{job?.price | currency:'EUR':"symbol"}})</p>
+    <div *ngIf="!isUserSeller()" class="rating">
+        by {{job?.seller?.username}}
+        <i *ngIf="job?.rating !== null" class="material-icons star">star_rate</i>
+        <span *ngIf="job?.rating !== null">{{job?.rating}}</span>
+    </div>
+
+    <div *ngIf="isUserSeller()" class="rating">
+        <i *ngIf="job?.rating !== null" class="material-icons star">star_rate</i>
+        <span *ngIf="job?.rating !== null">{{job?.rating}}</span>
+    </div>
+
+    <img class="job-preview-image" src="{{LOCAL_HOST + job?.previewImage}}" alt="suggestive image for the job"/>
+    <p>Job Description:</p>
+    <p class="box-details">{{job?.description}}</p>
+    <div class="purchase-details-info">
+        <div class="purchase-details-info-list">
+            <p>Delivery Time: {{job?.daysUntilDelivery}} days</p>
+            <p>Price: {{job?.price | currency:'EUR':"symbol"}}</p>
+        </div>
+        <div class="right-button">
+            <button *ngIf="!isUserSeller()" (click)="purchase()" mat-flat-button class="green-button">Order Now</button>
+        </div>
+    </div>
+</div>
