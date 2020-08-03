@@ -37,6 +37,10 @@ export class JobService {
         });
     }
 
+    public getJobsSize(categoryId: string): Observable<any> {
+        return this.http.get<any>(this.API_URI + '/jobs/size', {params: {categoryId}});
+    }
+
     public getAllJobsBySellerId(id: number): Observable<Job[]> {
         return this.http.get<Job[]>(this.API_URI + `/users/${id}/jobs`);
     }

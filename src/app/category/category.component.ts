@@ -16,13 +16,13 @@ export class CategoryComponent implements OnInit {
     public categoryId?: string;
     private jobReq?: JobReq;
     public jobs?: Array<Job>;
-    public pages: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    public pages: Array<number> = [];
     public selectedPage = 0;
+    private nrOfJobsOnPage = 15;
 
     constructor(private route: ActivatedRoute,
                 private categoryService: CategoryService,
-                private jobService: JobService,
-                private changeDetector: ChangeDetectorRef) {
+                private jobService: JobService) {
     }
 
     ngOnInit(): void {
@@ -33,22 +33,29 @@ export class CategoryComponent implements OnInit {
         });
     }
 
-    private getAllJobsByCategoryId() {
+    private getAllJobsByCategoryId(): void {
         this.categoryService.getCategory(this.categoryId).subscribe(category => {
             this.category = category;
             this.jobReq = {
                 distinct: 'false',
                 page: this.selectedPage.toString(),
-                size: '18',
+                size: this.nrOfJobsOnPage.toString(),
                 sort: 'rating,desc',
                 categoryId: this.categoryId
             };
             this.getAllJobs();
+            if (this.selectedPage === 0 && this.pages.length === 0) {
+                this.jobService.getJobsSize(this.categoryId).subscribe(response => {
+                    this.calculateNrOfPages(this.nrOfJobsOnPage, response.size);
+                });
+            }
         });
     }
 
     private getAllJobs(): void {
-        this.jobService.getAllJobsWithPagination(this.jobReq).subscribe(jobs => this.jobs = jobs);
+        this.jobService.getAllJobsWithPagination(this.jobReq).subscribe(jobs => {
+            this.jobs = jobs;
+        });
     }
 
     public onPageClick(currentPage): void {
@@ -56,25 +63,32 @@ export class CategoryComponent implements OnInit {
         this.getAllJobsByCategoryId();
     }
 
-    public changePageNumbers(operation: string): void {
-        if (operation === 'next') {
-            for (let i = 0; i < this.pages.length; i++) {
-                this.pages[i] = this.pages[i] + 9;
-                this.changeDetector.detectChanges();
+    private calculateNrOfPages(sizeOfPage: number, jobsSize: number) {
+        if (sizeOfPage > 0) {
+            const nrOfPages = Math.round(jobsSize / sizeOfPage);
+            for (let i = 0; i < nrOfPages; i++) {
+                this.pages.push(i);
             }
-            this.selectedPage = this.pages[0];
+            console.log(nrOfPages);
+        }
+        if (jobsSize === 0) {
+            this.pages.push(0);
+        }
+    }
+
+    public changeFromFirstPageToLast(operation: string): void {
+        const lastPageNumber = this.pages.length - 1;
+        const firstPageNumber = 0;
+        if (operation === 'lastPage') {
+            this.selectedPage = this.pages[lastPageNumber];
             this.getAllJobsByCategoryId();
-        } else if (operation === 'previous' && this.selectedPage > 8) {
-            for (let i = 0; i < this.pages.length; i++) {
-                this.pages[i] = this.pages[i] - 9;
-                this.changeDetector.detectChanges();
-            }
-            this.selectedPage = this.pages[this.pages.length - 1];
+        } else if (operation === 'firstPage' && this.selectedPage === lastPageNumber) {
+            this.selectedPage = firstPageNumber;
             this.getAllJobsByCategoryId();
         }
     }
 
-    public showPreviousButton(): boolean {
-        return this.selectedPage > 8;
+    public showFirstPageButton(): boolean {
+        return this.selectedPage === this.pages.length - 1;
     }
 }
