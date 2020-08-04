@@ -1,22 +1,27 @@
-<app-login-navbar></app-login-navbar>
-<app-menu [selectedCategoryId]="categoryId"></app-menu>
-<div>
-    <p class="title">{{category?.name}}</p>
-    <p class="title" *ngIf="categoryId === ''">{{category?.name}}Jobs from all categories</p>
-    <p class="subtitle">Do more with less! Check out these {{category?.name}} jobs and make your project come to
-        life.</p>
-    <p class="title" *ngIf="this.jobs?.length === 0">There are currently no jobs in this category!</p>
-</div>
-<app-job-card [jobs]="jobs"></app-job-card>
-<div class="paginator" *ngIf="jobs?.length > 0">
-    <button class="paginator-button material-icons" (click)="changeFromFirstPageToLast('firstPage')"
-            *ngIf="showFirstPageButton()">
-        first_page
-    </button>
-    <div *ngFor="let pageNumber of pages">
-        <button class="paginator-button" [ngClass]="{'selected-button': pageNumber === this.selectedPage}"
-                (click)="onPageClick(pageNumber)">{{pageNumber + 1}}</button>
+<div class="page-container">
+    <div class="content-wrap">
+        <app-login-navbar></app-login-navbar>
+        <app-menu [selectedCategoryId]="categoryId"></app-menu>
+        <div>
+            <p class="title">{{category?.name}}</p>
+            <p class="title" *ngIf="categoryId === ''">{{category?.name}}Jobs from all categories</p>
+            <p class="subtitle">Do more with less! Check out these {{category?.name}} jobs and make your project come to
+                life.</p>
+            <p class="title" *ngIf="this.jobs?.length === 0">There are currently no jobs in this category!</p>
+        </div>
+        <app-job-card [jobs]="jobs"></app-job-card>
+        <div class="paginator" *ngIf="jobs?.length > 0">
+            <button class="paginator-button material-icons" (click)="changeFromFirstPageToLast('firstPage')"
+                    *ngIf="showFirstPageButton()">
+                first_page
+            </button>
+            <div *ngFor="let pageNumber of pages">
+                <button class="paginator-button" [ngClass]="{'selected-button': pageNumber === this.selectedPage}"
+                        (click)="onPageClick(pageNumber)">{{pageNumber + 1}}</button>
+            </div>
+            <button class="paginator-button material-icons" (click)="changeFromFirstPageToLast('lastPage')">last_page
+            </button>
+        </div>
     </div>
-    <button class="paginator-button material-icons" (click)="changeFromFirstPageToLast('lastPage')">last_page</button>
+    <app-footer class="footer"></app-footer>
 </div>
-<app-footer></app-footer>

@@ -30,6 +30,12 @@ export class CategoryComponent implements OnInit {
             this.categoryId = params.get('id') || '';
             this.selectedPage = 0;
             this.getAllJobsByCategoryId();
+            this.pages = [];
+            if (this.pages.length === 0) {
+                this.jobService.getJobsSize(this.categoryId).subscribe(response => {
+                    this.calculateNrOfPages(this.nrOfJobsOnPage, response.size);
+                });
+            }
         });
     }
 
@@ -44,12 +50,6 @@ export class CategoryComponent implements OnInit {
                 categoryId: this.categoryId
             };
             this.getAllJobs();
-            this.pages = [];
-            if (this.pages.length === 0) {
-                this.jobService.getJobsSize(this.categoryId).subscribe(response => {
-                    this.calculateNrOfPages(this.nrOfJobsOnPage, response.size);
-                });
-            }
         });
     }
 
@@ -65,14 +65,14 @@ export class CategoryComponent implements OnInit {
     }
 
     private calculateNrOfPages(sizeOfPage: number, jobsSize: number) {
-        if (sizeOfPage > 0) {
+        if (jobsSize <= sizeOfPage) {
+            this.pages.push(0);
+        } else {
             const nrOfPages = Math.round(jobsSize / sizeOfPage);
+            console.log(nrOfPages);
             for (let i = 0; i < nrOfPages; i++) {
                 this.pages.push(i);
             }
-        }
-        if (sizeOfPage === 0) {
-            this.pages.push(0);
         }
     }
 
