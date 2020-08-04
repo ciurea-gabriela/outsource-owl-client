@@ -11,8 +11,8 @@ import {RegisterUserDialogComponent} from './components/register-user-dialog/reg
 import {LoginNavbarComponent} from './components/login-navbar/login-navbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfirmationDialogComponent} from './components/confirmation-dialog/confirmation-dialog.component';
-import { PurchaseDialogComponent } from './components/purchase-dialog/purchase-dialog.component';
-import { AddBalanceDialogComponent } from './components/add-balance-dialog/add-balance-dialog.component';
+import {PurchaseDialogComponent} from './components/purchase-dialog/purchase-dialog.component';
+import {AddBalanceDialogComponent} from './components/add-balance-dialog/add-balance-dialog.component';
 
 
 @NgModule({
@@ -52,4 +52,5 @@ import { AddBalanceDialogComponent } from './components/add-balance-dialog/add-b
     ]
 })
 export class SharedModule {
+
 }

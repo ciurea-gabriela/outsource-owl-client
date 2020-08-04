@@ -20,7 +20,6 @@ export class JobService {
         });
         formData.append('file', image, 'file');
         formData.append('job', blobOverrides, 'job');
-        console.log(formData);
 
         return this.http.post<any>(this.API_URI + `/users/${userId}/jobs`, formData);
     }

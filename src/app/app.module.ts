@@ -12,6 +12,7 @@ import {PurchaseModule} from './purchase/purchase.module';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {JobModule} from './job/job.module';
 import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material
         CategoryModule,
         PurchaseModule,
         DashboardModule,
-        JobModule
+        JobModule,
+        SharedModule
     ],
     providers: [
         {

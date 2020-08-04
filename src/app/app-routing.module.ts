@@ -14,7 +14,7 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'jobs/:id', component: JobComponent},
     {path: 'purchases/:id', component: PurchaseComponent},
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

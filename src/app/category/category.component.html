@@ -8,7 +8,7 @@
     <p class="title" *ngIf="this.jobs?.length === 0">There are currently no jobs in this category!</p>
 </div>
 <app-job-card [jobs]="jobs"></app-job-card>
-<div class="paginator">
+<div class="paginator" *ngIf="jobs?.length > 0">
     <button class="paginator-button material-icons" (click)="changeFromFirstPageToLast('firstPage')"
             *ngIf="showFirstPageButton()">
         first_page

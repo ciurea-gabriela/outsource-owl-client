@@ -44,7 +44,8 @@ export class CategoryComponent implements OnInit {
                 categoryId: this.categoryId
             };
             this.getAllJobs();
-            if (this.selectedPage === 0 && this.pages.length === 0) {
+            this.pages = [];
+            if (this.pages.length === 0) {
                 this.jobService.getJobsSize(this.categoryId).subscribe(response => {
                     this.calculateNrOfPages(this.nrOfJobsOnPage, response.size);
                 });
@@ -69,9 +70,8 @@ export class CategoryComponent implements OnInit {
             for (let i = 0; i < nrOfPages; i++) {
                 this.pages.push(i);
             }
-            console.log(nrOfPages);
         }
-        if (jobsSize === 0) {
+        if (sizeOfPage === 0) {
             this.pages.push(0);
         }
     }
